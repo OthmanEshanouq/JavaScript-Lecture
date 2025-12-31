@@ -3,95 +3,566 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A simple, responsive, and accessible webpage">
-    <title>Responsive & Accessible Webpage</title>
+    <meta name="description" content="Premium N-Tech T-shirt - Everyday wear, quick dry, comfortable, no ironing needed">
+    <title>N-Tech Premium T-Shirt | Everyday Comfort</title>
     <link rel="stylesheet" href="styles.css">
-    <script>
-        // Initialize theme immediately to prevent flash
-        (function() {
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', currentTheme);
-        })();
-    </script>
+    <script src="javaScript.js" defer></script>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Top Anchor -->
+    <div id="top" class="top-anchor"></div>
     
-    <header role="banner">
-        <nav role="navigation" aria-label="Main navigation">
-            <ul class="nav-list">
-                <li><a href="#home" aria-current="page">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-            </ul>
-            <div class="header-controls">
-                <label for="theme-toggle" class="theme-toggle-label" aria-label="Toggle dark mode">
-                    <input type="checkbox" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-                    <span class="toggle-slider">
-                        <span class="theme-icon moon-icon">🌙</span>
+    <!-- Scroll to Top Button -->
+    <a href="#top" class="scroll-to-top" aria-label="Scroll to top">↑</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Brand Logo -->
+            <div class="brand">
+                <a href="#top" class="brand-link">N-Tech</a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav" aria-label="Main navigation">
+                <a href="#top" class="nav-link" aria-label="Go to home page" title="Home">Home</a>
+                <a href="#product" class="nav-link" aria-label="View product details" title="Product">Product</a>
+            </nav>
+
+            <!-- Search Form with Icons -->
+            <div class="search-icons-container">
+                <form class="search-form" role="search" aria-label="Site search">
+                    <input type="search" id="search-input" class="search-input" placeholder="Search..." aria-label="Search products" title="Type to search for products">
+                    <button type="submit" class="search-submit-btn" aria-label="Submit search">🔍</button>
+                </form>
+                
+                <!-- Theme Toggle -->
+                <label for="theme-toggle" class="theme-toggle-label" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+                    <input type="checkbox" id="theme-toggle" class="theme-toggle-input" aria-label="Theme toggle">
+                    <span class="theme-toggle-slider">
                         <span class="theme-icon sun-icon">☀️</span>
+                        <span class="theme-icon moon-icon">🌙</span>
                     </span>
                 </label>
-                <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                    <span class="hamburger"></span>
-                    <span class="hamburger"></span>
-                    <span class="hamburger"></span>
-                </button>
+                
+                <a href="#product" class="icon-link cart-link" aria-label="View shopping cart" title="Shopping Cart">
+                    <img src="assets/shopping-cart.png" alt="Shopping cart icon" class="icon-img">
+                    <span id="cart-count-badge" class="cart-count-badge" aria-label="Items in cart">0</span>
+                </a>
+                <a href="#account" class="icon-link" aria-label="Access my account" title="My Account">
+                    <img src="assets/profile.png" alt="My account icon" class="icon-img">
+                </a>
             </div>
-        </nav>
+
+            <!-- Hamburger Menu Toggle -->
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <label for="menu-toggle" class="hamburger" aria-label="Toggle navigation menu" title="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </label>
+
+            <!-- Mobile/Tablet Navigation Menu -->
+            <nav class="mobile-nav" aria-label="Mobile navigation">
+                <form class="mobile-search-form" role="search" aria-label="Site search">
+                    <input type="search" id="mobile-search-input" class="mobile-search-input" placeholder="Search..." aria-label="Search products" title="Type to search for products">
+                    <button type="submit" class="mobile-search-submit-btn" aria-label="Submit search">🔍</button>
+                </form>
+                
+                <!-- Mobile Theme Toggle -->
+                <div class="mobile-theme-toggle-container">
+                    <label for="mobile-theme-toggle" class="mobile-theme-toggle-label" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+                        <input type="checkbox" id="mobile-theme-toggle" class="theme-toggle-input" aria-label="Theme toggle">
+                        <span class="theme-toggle-slider">
+                            <span class="theme-icon sun-icon">☀️</span>
+                            <span class="theme-icon moon-icon">🌙</span>
+                        </span>
+                        <span class="mobile-theme-text">Dark Mode</span>
+                    </label>
+                </div>
+                
+                <a href="#top" class="mobile-nav-link" aria-label="Go to home page" title="Home">Home</a>
+                <a href="#product" class="mobile-nav-link" aria-label="Browse men's products" title="Men's Collection">Men</a>
+                <a href="#product" class="mobile-nav-link" aria-label="Browse women's products" title="Women's Collection">Women</a>
+                <a href="#product" class="mobile-nav-link" aria-label="Browse unisex products" title="Unisex Collection">Unisex</a>
+                <a href="#product" class="mobile-nav-link cart-link-mobile" aria-label="View shopping cart" title="Shopping Cart">
+                    <img src="assets/shopping-cart.png" alt="Shopping cart icon" class="mobile-icon-img"> Cart
+                    <span id="cart-count-badge-mobile" class="cart-count-badge mobile" aria-label="Items in cart">0</span>
+                </a>
+                <a href="#account" class="mobile-nav-link" aria-label="Access my account" title="My Account">
+                    <img src="assets/profile.png" alt="My account icon" class="mobile-icon-img"> My Account
+                </a>
+            </nav>
+        </div>
     </header>
 
-    <main id="main-content" role="main">
-        <section id="home" class="interactive-card-section">
-            <article class="interactive-card" id="interactive-card">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect fill='%232563eb' width='400' height='250'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='30' font-weight='bold' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3ECard Image%3C/text%3E%3C/svg%3E" alt="Card image placeholder" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Sample Card</h3>
-                    <p class="card-text">This is an interactive card. Click the button below to see the changes!</p>
-                    <p class="confirmation-message" id="confirmation-message" role="alert" aria-live="polite"></p>
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Hero section">
+        <div class="hero-overlay">
+            <h1 class="hero-title">Premium N-Tech Fabric</h1>
+            <p class="hero-subtitle">Technology Meets Comfort</p>
+        </div>
+    </section>
+
+    <!-- Product Showcase Section -->
+    <section id="product" class="product-showcase" aria-label="Product showcase">
+        <div class="product-card">
+            <!-- Image Slider -->
+            <div class="slider-container">
+                <input type="radio" name="slider" id="slide1" class="slider-radio" checked>
+                <input type="radio" name="slider" id="slide2" class="slider-radio">
+                <input type="radio" name="slider" id="slide3" class="slider-radio">
+                <input type="radio" name="slider" id="slide4" class="slider-radio">
+                <input type="radio" name="slider" id="slide5" class="slider-radio">
+                <input type="radio" name="slider" id="slide6" class="slider-radio">
+                <input type="radio" name="slider" id="slide7" class="slider-radio">
+                <input type="radio" name="slider" id="slide8" class="slider-radio">
+                <input type="radio" name="slider" id="slide9" class="slider-radio">
+                <input type="radio" name="slider" id="slide10" class="slider-radio">
+                <input type="radio" name="slider" id="slide11" class="slider-radio">
+                
+                <div class="slider-wrapper">
+                    <div class="slide slide1">
+                        <img src="assets/images/front side.png" 
+                             alt="Black N-Tech T-shirt front view showing premium fabric quality" 
+                             title="Black N-Tech T-shirt Front View"
+                             class="slide-image">
+                    </div>
+                    <div class="slide slide2">
+                        <img src="assets/images/left side 45 dgree.png" 
+                             alt="Black N-Tech T-shirt side view at 45 degree angle displaying comfort and fit" 
+                             title="Black N-Tech T-shirt Side View 45 Degree"
+                             class="slide-image">
+                    </div>
+                    <div class="slide slide3">
+                        <img src="assets/images/back side.png" 
+                             alt="Black N-Tech T-shirt back view highlighting fabric texture and quality" 
+                             title="Black N-Tech T-shirt Back View"
+                             class="slide-image">
+                    </div>
+                    <div class="slide slide4">
+                        <img src="assets/images/left side 1.png" 
+                             alt="Black N-Tech T-shirt left side view showing fit and style" 
+                             title="Black N-Tech T-shirt Left Side View"
+                             class="slide-image">
+                    </div>
+                    <div class="slide slide5">
+                        <img src="assets/images/right side.png" 
+                             alt="Black N-Tech T-shirt right side view displaying comfort" 
+                             title="Black N-Tech T-shirt Right Side View"
+                             class="slide-image">
+                    </div>
+                    <div class="slide slide6">
+                        <img src="assets/images/in casual.png" 
+                             alt="Black N-Tech T-shirt worn in casual style demonstrating everyday wear" 
+                             title="Black N-Tech T-shirt Casual Style"
+                             class="slide-image">
+                    </div>
+                    <div class="slide slide7">
+                        <img src="assets/images/in formal.png" 
+                             alt="Black N-Tech T-shirt worn in formal style showing versatility" 
+                             title="Black N-Tech T-shirt Formal Style"
+                             class="slide-image">
+                    </div>
+                    <div class="slide slide8">
+                        <img src="assets/images/running.png" 
+                             alt="Black N-Tech T-shirt during running activity showing breathable fabric and comfort" 
+                             title="Black N-Tech T-shirt Running Activity"
+                             class="slide-image">
+                    </div>
+                    <div class="slide slide9">
+                        <img src="assets/images/the material.png" 
+                             alt="Close-up view of N-Tech fabric material showing texture and quality" 
+                             title="N-Tech Fabric Material Detail"
+                             class="slide-image">
+                    </div>
+                    <div class="slide slide10">
+                        <img src="assets/images/drop on the fabric.png" 
+                             alt="Water drop on N-Tech fabric demonstrating quick-dry technology" 
+                             title="Water Drop on N-Tech Fabric"
+                             class="slide-image">
+                    </div>
+                    <div class="slide slide11">
+                        <img src="assets/images/four images in one.png" 
+                             alt="Four views of Black N-Tech T-shirt showcasing different angles" 
+                             title="Four Views of N-Tech T-shirt"
+                             class="slide-image">
+                    </div>
                 </div>
-                <button class="card-button" id="card-button" aria-label="Click to change card appearance">Click Me</button>
-            </article>
-        </section>
 
-        <section id="about" class="content-section" aria-labelledby="about-heading">
-            <h2 id="about-heading">About Us</h2>
-            <article>
-                <p>This webpage demonstrates best practices in web development, including semantic HTML, responsive design, and accessibility features.</p>
-                <p>It follows WCAG guidelines to ensure it's usable by everyone, including people with disabilities.</p>
-            </article>
-        </section>
-
-        <section id="services" class="content-section services-section" aria-labelledby="services-heading">
-            <div class="services-header">
-                <h2 id="services-heading">Our Services</h2>
-                <button class="show-services-button" id="show-services-button" aria-label="Show our services" aria-expanded="false">Show our services</button>
-            </div>
-            <div class="services-content" id="services-content" style="display: none;">
-                <div class="services-grid">
-                    <article class="service-card" tabindex="0">
-                        <h3>Web Design</h3>
-                        <p>Creating beautiful and functional websites that work on all devices.</p>
-                    </article>
-                    <article class="service-card" tabindex="0">
-                        <h3>Accessibility</h3>
-                        <p>Ensuring your website is accessible to all users, regardless of abilities.</p>
-                    </article>
-                    <article class="service-card" tabindex="0">
-                        <h3>Responsive Design</h3>
-                        <p>Building websites that adapt seamlessly to any screen size.</p>
-                    </article>
+                <!-- Slider Navigation Buttons -->
+                <label for="slide11" class="slider-btn prev slide1-prev" aria-label="Previous image">‹</label>
+                <label for="slide1" class="slider-btn prev slide2-prev" aria-label="Previous image">‹</label>
+                <label for="slide2" class="slider-btn prev slide3-prev" aria-label="Previous image">‹</label>
+                <label for="slide3" class="slider-btn prev slide4-prev" aria-label="Previous image">‹</label>
+                <label for="slide4" class="slider-btn prev slide5-prev" aria-label="Previous image">‹</label>
+                <label for="slide5" class="slider-btn prev slide6-prev" aria-label="Previous image">‹</label>
+                <label for="slide6" class="slider-btn prev slide7-prev" aria-label="Previous image">‹</label>
+                <label for="slide7" class="slider-btn prev slide8-prev" aria-label="Previous image">‹</label>
+                <label for="slide8" class="slider-btn prev slide9-prev" aria-label="Previous image">‹</label>
+                <label for="slide9" class="slider-btn prev slide10-prev" aria-label="Previous image">‹</label>
+                <label for="slide10" class="slider-btn prev slide11-prev" aria-label="Previous image">‹</label>
+                
+                <label for="slide2" class="slider-btn next slide1-next" aria-label="Next image">›</label>
+                <label for="slide3" class="slider-btn next slide2-next" aria-label="Next image">›</label>
+                <label for="slide4" class="slider-btn next slide3-next" aria-label="Next image">›</label>
+                <label for="slide5" class="slider-btn next slide4-next" aria-label="Next image">›</label>
+                <label for="slide6" class="slider-btn next slide5-next" aria-label="Next image">›</label>
+                <label for="slide7" class="slider-btn next slide6-next" aria-label="Next image">›</label>
+                <label for="slide8" class="slider-btn next slide7-next" aria-label="Next image">›</label>
+                <label for="slide9" class="slider-btn next slide8-next" aria-label="Next image">›</label>
+                <label for="slide10" class="slider-btn next slide9-next" aria-label="Next image">›</label>
+                <label for="slide11" class="slider-btn next slide10-next" aria-label="Next image">›</label>
+                <label for="slide1" class="slider-btn next slide11-next" aria-label="Next image">›</label>
+                
+                <!-- Slider Indicators -->
+                <div class="slider-indicators">
+                    <label for="slide1" class="indicator" aria-label="Slide 1"></label>
+                    <label for="slide2" class="indicator" aria-label="Slide 2"></label>
+                    <label for="slide3" class="indicator" aria-label="Slide 3"></label>
+                    <label for="slide4" class="indicator" aria-label="Slide 4"></label>
+                    <label for="slide5" class="indicator" aria-label="Slide 5"></label>
+                    <label for="slide6" class="indicator" aria-label="Slide 6"></label>
+                    <label for="slide7" class="indicator" aria-label="Slide 7"></label>
+                    <label for="slide8" class="indicator" aria-label="Slide 8"></label>
+                    <label for="slide9" class="indicator" aria-label="Slide 9"></label>
+                    <label for="slide10" class="indicator" aria-label="Slide 10"></label>
+                    <label for="slide11" class="indicator" aria-label="Slide 11"></label>
                 </div>
             </div>
-        </section>
-    </main>
 
-    <footer role="contentinfo">
-        <p>&copy; 2025 Responsive & Accessible Webpage. All rights reserved.</p>
-        <p>Built with semantic HTML, responsive CSS, and accessible JavaScript.</p>
+            <!-- Product Info -->
+            <article class="product-info">
+                <h2 class="product-title">N-Tech Premium T-Shirt</h2>
+                <p class="product-name-mobile" aria-hidden="true">N-Tech Premium T-Shirt - Black</p>
+                
+                <div class="product-price-action">
+                    <span class="product-price" aria-label="Price: 34 JOD and 99 cents">34.99 JOD</span>
+                </div>
+                
+                <!-- Quantity Controls -->
+                <div class="quantity-controls">
+                    <label for="quantity-input" class="quantity-label">Quantity:</label>
+                    <div class="quantity-input-group">
+                        <button type="button" class="quantity-btn quantity-decrease" aria-label="Decrease quantity" onclick="decreaseQuantity()">-</button>
+                        <input type="number" id="quantity-input" class="quantity-input" value="1" min="1" max="99" aria-label="Quantity">
+                        <button type="button" class="quantity-btn quantity-increase" aria-label="Increase quantity" onclick="increaseQuantity()">+</button>
+                    </div>
+                </div>
+                
+                <!-- Add to Cart Button -->
+                <button type="button" class="add-to-bag-btn" aria-label="Add N-Tech Premium T-Shirt to cart" title="Add to Cart (the delivery will be in 2 business days)" onclick="addToCart()">Add to Cart</button>
+
+                <!-- Size Selector -->
+                <fieldset class="size-selector" aria-label="Select T-shirt size">
+                    <legend class="sr-only">Choose your size</legend>
+                    <span class="size-label">Size:</span>
+                    <input type="radio" name="size" id="size-s" value="S" class="size-radio" aria-label="Size Small">
+                    <label for="size-s" class="size-label-btn" title="Size Small">S</label>
+                    
+                    <input type="radio" name="size" id="size-m" value="M" class="size-radio" checked aria-label="Size Medium">
+                    <label for="size-m" class="size-label-btn" title="Size Medium">M</label>
+                    
+                    <input type="radio" name="size" id="size-l" value="L" class="size-radio" aria-label="Size Large">
+                    <label for="size-l" class="size-label-btn" title="Size Large">L</label>
+                    
+                    <input type="radio" name="size" id="size-xl" value="XL" class="size-radio" aria-label="Size Extra Large">
+                    <label for="size-xl" class="size-label-btn" title="Size Extra Large">XL</label>
+                </fieldset>
+
+                <p class="product-color">Color: <strong aria-label="Color Black">Black</strong></p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Product Description Section -->
+    <section class="product-description" aria-label="Product features">
+        <h2 class="section-title">Why N-Tech Fabric?</h2>
+        
+        <div class="features-grid" role="list">
+            <article class="feature-card" role="listitem">
+                <div class="feature-icon" aria-hidden="true">👕</div>
+                <h3 class="feature-title">Everyday Wear</h3>
+                <p class="feature-text">Perfect for daily use, designed to keep you comfortable all day long.</p>
+            </article>
+
+            <article class="feature-card" role="listitem">
+                <div class="feature-icon" aria-hidden="true">⚡</div>
+                <h3 class="feature-title">Quick Dry</h3>
+                <p class="feature-text">Advanced moisture-wicking technology ensures fast drying after washing.</p>
+            </article>
+
+            <article class="feature-card" role="listitem">
+                <div class="feature-icon" aria-hidden="true">😊</div>
+                <h3 class="feature-title">Very Comfortable</h3>
+                <p class="feature-text">Soft, breathable fabric that feels gentle against your skin.</p>
+            </article>
+
+            <article class="feature-card" role="listitem">
+                <div class="feature-icon" aria-hidden="true">✨</div>
+                <h3 class="feature-title">No Ironing Needed</h3>
+                <p class="feature-text">Wrinkle-resistant material that stays crisp and neat without ironing.</p>
+            </article>
+
+            <article class="feature-card" role="listitem">
+                <div class="feature-icon" aria-hidden="true">
+                    <img src="assets/Reflects Sun Rays.png" alt="Reflects Sun Rays icon" class="feature-icon-img">
+                </div>
+                <h3 class="feature-title">Reflects Sun Rays</h3>
+                <p class="feature-text">Special coating reflects harmful sun rays, keeping you cooler.</p>
+            </article>
+
+            <article class="feature-card" role="listitem">
+                <div class="feature-icon" aria-hidden="true">🛡️</div>
+                <h3 class="feature-title">UV Protection</h3>
+                <p class="feature-text">UPF-rated fabric provides excellent protection against UV radiation.</p>
+            </article>
+
+            <article class="feature-card feature-card-printable" role="listitem">
+                <div class="feature-icon" aria-hidden="true">
+                    <img src="assets/printable T-shirt icon.png" alt="Printable T-shirt icon" class="feature-icon-img">
+                </div>
+                <h3 class="feature-title">Printable Fabric</h3>
+                <p class="feature-text">Perfect for custom designs and personalization options.</p>
+            </article>
+
+            <article class="feature-card" role="listitem">
+                <div class="feature-icon" aria-hidden="true">💪</div>
+                <h3 class="feature-title">Durable & Breathable</h3>
+                <p class="feature-text">Built to last with superior breathable fabric for maximum comfort.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-container" aria-label="Frequently Asked Questions">
+        <div class="faq-header">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <button type="button" id="faq-toggle-btn" class="faq-toggle-btn" aria-label="Toggle FAQ section" aria-expanded="false" onclick="toggleFAQ()">Show FAQ</button>
+        </div>
+        
+        <div id="faq-section" class="faq-section hidden">
+            <div class="faq-grid">
+                <article class="faq-item">
+                    <h3 class="faq-question">Shipping & Refund Policy</h3>
+                    <p class="faq-answer">We offer free standard shipping on all orders within Jordan. Delivery typically takes 2-3 business days. For refunds, we provide a 30-day return policy. Items must be unworn, unwashed, and in original packaging with tags attached. Refunds will be processed within 5-7 business days after we receive the returned item.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">International Shipping</h3>
+                    <p class="faq-answer">Yes, we ship internationally! International shipping costs and delivery times vary by location. Standard international shipping takes 7-14 business days, while express shipping (additional cost) takes 3-5 business days. Please note that customers are responsible for any customs duties or import taxes that may apply.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">Shipping Time</h3>
+                    <p class="faq-answer">Standard shipping within Jordan takes 2-3 business days from the date of order confirmation. Orders placed before 2 PM will be processed the same day. Orders placed after 2 PM will be processed the next business day. You will receive a tracking number via email once your order ships.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">What payment methods do you accept?</h3>
+                    <p class="faq-answer">We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and cash on delivery (COD) for orders within Jordan. International orders can be paid via credit card or PayPal only.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">How do I track my order?</h3>
+                    <p class="faq-answer">Once your order ships, you'll receive an email confirmation with a tracking number. You can use this tracking number on our website or the carrier's website to track your package in real-time.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">What if my item doesn't fit?</h3>
+                    <p class="faq-answer">We offer free exchanges within 30 days of purchase. If your item doesn't fit, simply contact our customer service team, and we'll help you exchange it for a different size. The item must be unworn, unwashed, and in original packaging.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">How do I care for my N-Tech T-shirt?</h3>
+                    <p class="faq-answer">Our N-Tech fabric is easy to care for. Machine wash cold with similar colors, tumble dry low or air dry. No ironing needed! The fabric is wrinkle-resistant and maintains its quality even after multiple washes.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">Do you offer gift wrapping?</h3>
+                    <p class="faq-answer">Yes! We offer complimentary gift wrapping for all orders. Simply add a note in the checkout process, and we'll wrap your item beautifully. You can also include a personalized message that we'll include with the package.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">Can I cancel or modify my order?</h3>
+                    <p class="faq-answer">You can cancel or modify your order within 2 hours of placing it. After 2 hours, if your order has been processed, you'll need to contact our customer service team. Once the order ships, you can return it following our standard return policy.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">Are your products eco-friendly?</h3>
+                    <p class="faq-answer">Yes! Our N-Tech fabric is made using sustainable practices and eco-friendly materials. The quick-dry technology reduces water usage during washing, and our packaging is made from recycled materials. We're committed to reducing our environmental footprint.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" aria-label="Customer reviews">
+        <h2 class="section-title">What Customers Say</h2>
+        
+        <div class="reviews-slider-wrapper">
+            <input type="radio" name="review-slider" id="review1" class="review-radio" checked>
+            <input type="radio" name="review-slider" id="review2" class="review-radio">
+            <input type="radio" name="review-slider" id="review3" class="review-radio">
+            <input type="radio" name="review-slider" id="review4" class="review-radio">
+            <input type="radio" name="review-slider" id="review5" class="review-radio">
+            <input type="radio" name="review-slider" id="review6" class="review-radio">
+            <input type="radio" name="review-slider" id="review7" class="review-radio">
+            <input type="radio" name="review-slider" id="review8" class="review-radio">
+            <input type="radio" name="review-slider" id="review9" class="review-radio">
+            <input type="radio" name="review-slider" id="review10" class="review-radio">
+            <input type="radio" name="review-slider" id="review11" class="review-radio">
+            
+            <label for="review1" class="review-btn prev review2-prev" aria-label="Previous review">‹</label>
+            <label for="review2" class="review-btn prev review3-prev" aria-label="Previous review">‹</label>
+            <label for="review3" class="review-btn prev review4-prev" aria-label="Previous review">‹</label>
+            <label for="review4" class="review-btn prev review5-prev" aria-label="Previous review">‹</label>
+            <label for="review5" class="review-btn prev review6-prev" aria-label="Previous review">‹</label>
+            <label for="review6" class="review-btn prev review7-prev" aria-label="Previous review">‹</label>
+            <label for="review7" class="review-btn prev review8-prev" aria-label="Previous review">‹</label>
+            <label for="review8" class="review-btn prev review9-prev" aria-label="Previous review">‹</label>
+            <label for="review9" class="review-btn prev review10-prev" aria-label="Previous review">‹</label>
+            <label for="review10" class="review-btn prev review11-prev" aria-label="Previous review">‹</label>
+            
+            <label for="review2" class="review-btn next review1-next" aria-label="Next review">›</label>
+            <label for="review3" class="review-btn next review2-next" aria-label="Next review">›</label>
+            <label for="review4" class="review-btn next review3-next" aria-label="Next review">›</label>
+            <label for="review5" class="review-btn next review4-next" aria-label="Next review">›</label>
+            <label for="review6" class="review-btn next review5-next" aria-label="Next review">›</label>
+            <label for="review7" class="review-btn next review6-next" aria-label="Next review">›</label>
+            <label for="review8" class="review-btn next review7-next" aria-label="Next review">›</label>
+            <label for="review9" class="review-btn next review8-next" aria-label="Next review">›</label>
+            <label for="review10" class="review-btn next review9-next" aria-label="Next review">›</label>
+            <label for="review11" class="review-btn next review10-next" aria-label="Next review">›</label>
+            
+            <div class="reviews-slider-container">
+                <div class="reviews-wrapper" role="list">
+            <article class="review-card positive" role="listitem">
+                <div class="review-header">
+                    <span class="review-name" aria-label="Review by Sarah M.">Sarah M.</span>
+                    <span class="review-rating" aria-label="5 out of 5 stars">★★★★★</span>
+                </div>
+                <blockquote class="review-text" cite="#">
+                    <p>"Absolutely love this T-shirt! The fabric is incredibly comfortable and the quick-dry feature is amazing. Best purchase I've made this year!"</p>
+                </blockquote>
+            </article>
+
+            <article class="review-card positive" role="listitem">
+                <div class="review-header">
+                    <span class="review-name" aria-label="Review by James K.">James K.</span>
+                    <span class="review-rating" aria-label="5 out of 5 stars">★★★★★</span>
+                </div>
+                <blockquote class="review-text" cite="#">
+                    <p>"The quality is outstanding. No ironing needed is a game-changer for my busy lifestyle. Highly recommend!"</p>
+                </blockquote>
+            </article>
+
+            <article class="review-card positive" role="listitem">
+                <div class="review-header">
+                    <span class="review-name" aria-label="Review by Emma L.">Emma L.</span>
+                    <span class="review-rating" aria-label="5 out of 5 stars">★★★★★</span>
+                </div>
+                <blockquote class="review-text" cite="#">
+                    <p>"Perfect fit, amazing comfort, and the UV protection is a bonus. This is my go-to T-shirt now!"</p>
+                </blockquote>
+            </article>
+
+            <article class="review-card indirect-praise" role="listitem">
+                <div class="review-header">
+                    <span class="review-name" aria-label="Review by Mike R.">Mike R.</span>
+                    <span class="review-rating" aria-label="4 out of 5 stars">★★★★☆</span>
+                </div>
+                <blockquote class="review-text" cite="#">
+                    <p>"Great product, but delivery took longer than expected. The T-shirt itself is fantastic though!"</p>
+                </blockquote>
+            </article>
+
+            <article class="review-card indirect-praise" role="listitem">
+                <div class="review-header">
+                    <span class="review-name" aria-label="Review by Lisa T.">Lisa T.</span>
+                    <span class="review-rating" aria-label="4 out of 5 stars">★★★★☆</span>
+                </div>
+                <blockquote class="review-text" cite="#">
+                    <p>"Love the T-shirt! Only wish I had ordered more sizes. The fabric quality is excellent."</p>
+                </blockquote>
+            </article>
+
+            <article class="review-card indirect-praise" role="listitem">
+                <div class="review-header">
+                    <span class="review-name" aria-label="Review by David P.">David P.</span>
+                    <span class="review-rating" aria-label="4 out of 5 stars">★★★★☆</span>
+                </div>
+                <blockquote class="review-text" cite="#">
+                    <p>"Amazing T-shirt! The packaging could be better, but the product itself is top-notch."</p>
+                </blockquote>
+            </article>
+
+            <article class="review-card positive" role="listitem">
+                <div class="review-header">
+                    <span class="review-name" aria-label="Review by Alex B.">Alex B.</span>
+                    <span class="review-rating" aria-label="5 out of 5 stars">★★★★★</span>
+                </div>
+                <blockquote class="review-text" cite="#">
+                    <p>"I've worn this T-shirt for months now and it still looks brand new. The durability is impressive, and it's so comfortable for all-day wear!"</p>
+                </blockquote>
+            </article>
+
+            <article class="review-card positive" role="listitem">
+                <div class="review-header">
+                    <span class="review-name" aria-label="Review by Maria G.">Maria G.</span>
+                    <span class="review-rating" aria-label="5 out of 5 stars">★★★★★</span>
+                </div>
+                <blockquote class="review-text" cite="#">
+                    <p>"The quick-dry feature really works! Washed it in the morning and it was ready to wear by afternoon. Perfect for travel!"</p>
+                </blockquote>
+            </article>
+
+            <article class="review-card positive" role="listitem">
+                <div class="review-header">
+                    <span class="review-name" aria-label="Review by Tom H.">Tom H.</span>
+                    <span class="review-rating" aria-label="5 out of 5 stars">★★★★★</span>
+                </div>
+                <blockquote class="review-text" cite="#">
+                    <p>"Best T-shirt I've ever owned. The fabric feels premium, and I love that I don't need to iron it. Worth every penny!"</p>
+                </blockquote>
+            </article>
+
+            <article class="review-card positive" role="listitem">
+                <div class="review-header">
+                    <span class="review-name" aria-label="Review by Sophie W.">Sophie W.</span>
+                    <span class="review-rating" aria-label="5 out of 5 stars">★★★★★</span>
+                </div>
+                <blockquote class="review-text" cite="#">
+                    <p>"I bought three of these! The UV protection is great for outdoor activities, and the fabric is so breathable. Highly recommend!"</p>
+                </blockquote>
+            </article>
+
+            <article class="review-card positive" role="listitem">
+                <div class="review-header">
+                    <span class="review-name" aria-label="Review by Chris D.">Chris D.</span>
+                    <span class="review-rating" aria-label="5 out of 5 stars">★★★★★</span>
+                </div>
+                <blockquote class="review-text" cite="#">
+                    <p>"Excellent quality! The material is soft, the fit is perfect, and it maintains its shape after multiple washes. Couldn't be happier!"</p>
+                </blockquote>
+            </article>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <p class="footer-brand" aria-label="N-Tech brand name">N-Tech</p>
+            <p class="footer-copyright">&copy; 2025 N-Tech. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Placeholder sections for navigation links -->
+    <div id="cart" class="hidden-section" aria-hidden="true"></div>
+    <div id="account" class="hidden-section" aria-hidden="true"></div>
 </body>
 </html>
 

@@ -1,44 +1,57 @@
+# JavaScript Implementation Documentation
 
-○ The section shows and hides.
-○ A new button that changes:
-■ The background color of the webpage
-■ The text color of the webpage.
+## Overview
+This document outlines the JavaScript functionality implemented for the N-Tech Fabric website.
 
-1* CTA Button
+## Features Implemented
 
-1. What do you want the page to do?
-    to change the text color in the card
-2. What user action triggers it?
-    just to click the button & confirm the button is clicked
-3. What will change on the screen?
-    a text color in the card
-4. What are the steps to reach the output?
+### 1. FAQ Section
+- Collapsible FAQ section with multiple questions about shipping, refunds, and international shipping
+- Toggle button to show/hide FAQ content
+- Default state: Hidden
+- Smooth animations for expanding/collapsing
 
+### 2. Shopping Cart Functionality
+- "Add to Cart" button replaces "Buy Now"
+- Quantity controls with +/- buttons
+- Real-time cart count display on cart icon in header
+- Cart count badge shows total items in cart
 
+### 3. Dark/Light Mode Toggle
+- Theme switcher in header
+- Toggle button with sun (day) and moon (night) icons
+- Smooth transitions between themes
+- Theme preference saved to localStorage
 
+## JavaScript Functions
 
+### Cart Management
+- `addToCart()` - Adds items to cart
+- `increaseQuantity()` - Increases item quantity
+- `decreaseQuantity()` - Decreases item quantity
+- `updateCartCount()` - Updates cart count badge
+- `updateCartDisplay()` - Updates cart UI
 
+### FAQ Management
+- `toggleFAQ()` - Toggles FAQ section visibility
 
-2* FAQ or Features Section
+### Theme Management
+- `toggleTheme()` - Switches between light and dark mode
+- `initializeTheme()` - Loads saved theme preference on page load
+- `applyTheme()` - Applies theme styles
 
-1. What do you want the page to do?
-    to shows or hide a section
-2. What user action triggers it?
-    just click the button
-3. What will change on the screen?
-    our services will be shown 
-4. What are the steps to reach the output?
-    use Javascript code || click the button
+## Event Listeners
+- Button clicks for cart operations
+- FAQ toggle button
+- Theme toggle switch
+- Quantity control buttons
 
+## LocalStorage Usage
+- Theme preference (`theme`)
+- Cart data (`cart`)
 
+## Browser Compatibility
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- ES6+ JavaScript features
+- CSS Grid and Flexbox
 
-
-3* Light & Dark Mode Button
-
-1. What do you want the page to do?
-    to switch day/night mood
-2. What user action triggers it?
-    click the toggle in the header
-3. What will change on the screen?
-    all the website sections & texts colors will change
-4. What are the steps to reach the output?
