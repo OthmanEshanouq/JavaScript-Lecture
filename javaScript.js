@@ -8,44 +8,61 @@ let cart = {
     totalQuantity: 0
 };
 
-// Load cart from localStorage on page load
+// Load cart - always starts fresh from zero (no localStorage persistence)
 function loadCart() {
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
-        updateCartCount();
-    }
+    // Clear any existing cart data from localStorage
+    localStorage.removeItem('cart');
+    
+    // Always start with empty cart (always starts from zero)
+    cart.items = [];
+    cart.totalQuantity = 0;
+    
+    // Update cart count badge (will hide since cart is empty)
+    updateCartCount();
 }
 
-// Save cart to localStorage
+// Save cart to localStorage - disabled (cart data is not persisted)
 function saveCart() {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    // Cart data is not saved to localStorage
+    // Cart always starts fresh on page load
 }
 
-// Update cart count badge based on quantity input
+// Update cart count badge based on cart total quantity
+// Refreshes the number, increases/decreases it, and hides when cart is empty
 function updateCartCount() {
-    const quantityInput = document.getElementById('quantity-input');
     const cartCountBadge = document.getElementById('cart-count-badge');
     const cartCountBadgeMobile = document.getElementById('cart-count-badge-mobile');
     
-    // Get current quantity from input field
-    const currentQuantity = quantityInput ? (parseInt(quantityInput.value) || 0) : 0;
+    // Ensure items array exists and is valid
+    if (!cart.items || !Array.isArray(cart.items)) {
+        cart.items = [];
+    }
     
+    // Recalculate total quantity from cart items to ensure accuracy (start from 0)
+    cart.totalQuantity = cart.items.reduce((sum, item) => sum + (item.quantity || 0), 0);
+    const totalQuantity = cart.totalQuantity || 0; // Explicitly default to 0
+    
+    // Update desktop cart badge
     if (cartCountBadge) {
-        if (currentQuantity > 0) {
-            cartCountBadge.textContent = currentQuantity;
+        if (totalQuantity > 0) {
+            cartCountBadge.textContent = totalQuantity;
             cartCountBadge.style.display = 'flex';
         } else {
+            // Hide badge when cart is empty (0 items)
             cartCountBadge.style.display = 'none';
+            cartCountBadge.textContent = '0'; // Reset text to 0 when hiding
         }
     }
     
+    // Update mobile cart badge
     if (cartCountBadgeMobile) {
-        if (currentQuantity > 0) {
-            cartCountBadgeMobile.textContent = currentQuantity;
+        if (totalQuantity > 0) {
+            cartCountBadgeMobile.textContent = totalQuantity;
             cartCountBadgeMobile.style.display = 'inline-block';
         } else {
+            // Hide badge when cart is empty (0 items)
             cartCountBadgeMobile.style.display = 'none';
+            cartCountBadgeMobile.textContent = '0'; // Reset text to 0 when hiding
         }
     }
 }
@@ -103,7 +120,6 @@ function increaseQuantity() {
     if (currentQuantity < 99) {
         currentQuantity++;
         quantityInput.value = currentQuantity;
-        updateCartCount(); // Update badge when quantity changes
     }
 }
 
@@ -114,8 +130,16 @@ function decreaseQuantity() {
     if (currentQuantity > 0) {
         currentQuantity--;
         quantityInput.value = currentQuantity;
-        updateCartCount(); // Update badge when quantity changes
     }
+}
+
+// Clear all items from cart
+function clearCart() {
+    cart.items = [];
+    cart.totalQuantity = 0;
+    saveCart();
+    updateCartCount(); // This will hide the badge when totalQuantity is 0
+    showCartFeedback('Cart cleared!');
 }
 
 // Show cart feedback message
@@ -221,8 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
             quantityInput.value = 1;
         }
         
-        // Initial cart count update
-        updateCartCount();
+        // Note: updateCartCount() is already called in loadCart(), no need to call again
         
         // Validate quantity input
         quantityInput.addEventListener('input', function() {
@@ -232,7 +255,6 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (value > 99) {
                 this.value = 99;
             }
-            updateCartCount(); // Update badge when quantity changes
         });
         
         // Prevent invalid characters
