@@ -598,6 +598,7 @@ label:focus {
     letter-spacing: 4px;
     margin-bottom: 1rem;
     animation: fadeInUp 1s ease;
+    color: #ffffff;
 }
 
 .hero-subtitle {
@@ -606,6 +607,7 @@ label:focus {
     letter-spacing: 2px;
     opacity: 0.9;
     animation: fadeInUp 1s ease 0.2s both;
+    color: #ffffff;
 }
 
 @keyframes fadeInUp {
